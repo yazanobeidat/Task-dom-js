@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>
+        Exercise #4: Input check for minimmum number of charecter should be 6 and
+        password match in both input
+    </title>
+    <style>
+        * {
+            font-family: Arial, sans-serif;
+        }
+
+        .err {
+            color: red;
+            font-size: 0.7em;
+        }
+    </style>
+    <script>
+        function checkPass() {
+            const password1 = document.getElementById("password1").value;
+            const password2 = document.getElementById("password2").value;
+            if(!password1.length || !password2.length)return;
+            if (password1.length < 6 && password2.length < 6) {
+                document.getElementById("pw1_check").innerHTML =
+                    "you have to enter at least 6 digit!";
+                return false;
+            }
+
+            if (password1.length == password2.length) {
+                document.innerHTML = "ok!";
+            } else {
+                document.getElementById("pw2_check").innerHTML =
+                    "These passwords don't match";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <form name="pw">
+        <table>
+            <tr>
+                <td>Password (min 6 characters):</td>
+                <td>
+                    <input onchange="checkPass()" type="password" name="password1" id="password1" size="10" placeholder="Password" />
+                </td>
+                <td>
+                    <div id="pw1_check" class="err"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Repeat password:</td>
+                <td>
+                    <input onchange="checkPass()" type="password" name="password2" id="password2" size="10" placeholder="Password" />
+                </td>
+                <td>
+                    <div id="pw2_check" class="err"></div>
+                </td>
+            </tr>
+        </table>
+
+        <input type="submit" value="Submit" id="submitBtn" />
+    </form>
+</body>
+
+</html>

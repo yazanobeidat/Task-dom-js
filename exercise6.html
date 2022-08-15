@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercise #6: Simple playlist </title>
+    <link rel="stylesheet" href="exercise7.css">
+    <style> 
+    body {
+    font-family: Arial, sans-serif;
+}
+    ul#playlist {
+        border: 1px solid #a9a9a9;
+        border-radius: 5px;
+        margin-top: 10px;
+        padding: 0px;
+        list-style-type: none;
+    }
+    
+    ul#playlist li {
+        border-bottom: 1px solid #a9a9a9;
+        padding: 10px;
+        background-image: linear-gradient(#f9f9f9, #e3e3e3);
+    }
+    
+    ul#playlist li:last-child {
+        border-bottom: none;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+    ul#playlist li:first-child {
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
+    #delete-btn {
+        float: right;
+        background-color: white;
+        color: red;
+        cursor: pointer;
+        border: 2px;
+    }
+    
+</style>
+    <script>
+function AddSong(){
+
+const text = document.getElementById("songTextInput").value;
+if (!text) return;
+const list = document.getElementById("playlist");
+
+const li=document.createElement("li");
+const title = document.createElement("span");
+title.innerHTML = text;
+const deleteBtn=document.createElement("button");
+deleteBtn.setAttribute("id","delete-btn");
+deleteBtn.addEventListener("click", function (){
+    list.removeChild(li);
+});
+deleteBtn.innerHTML = "Delete";
+li.appendChild(title)
+li.appendChild(deleteBtn)
+list.insertAdjacentElement('beforeEnd',li)
+}
+
+
+
+    </script>
+</head>
+<body>
+<p>this is your playlist, when enter the song and hit add song a list should be created withe delete button as image below</p>
+<img src="images/Screenshot_3.jpg" style="width: 90%;">
+<form>
+    <input type="text" id="songTextInput" size="40" placeholder="Song name">
+    <input type="button" id="addButton"  value="Add Song" onclick="AddSong()">
+</form>
+
+<ul id="playlist">
+</ul>
+
+
+</body>
+</html>
+
